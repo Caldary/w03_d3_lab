@@ -27,6 +27,13 @@ class Artist
         return artists.map { |artist| Artist.new(artist) }
     end
 
+    def self.find_by_id(id)
+        sql = "SELECT * FROM artists WHERE id = $1"
+        values = [id]
+        artist = SqlRunner.run(sql, values)
+        return Artist.new(artist.first)
+    end
+
     def update()
         sql = "UPDATE artists SET name = $1
         WHERE id = $2"

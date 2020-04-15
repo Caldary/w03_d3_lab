@@ -27,6 +27,7 @@ album4.save()
 artist1.name = "Gorillaz"
 artist1.update()
 album1.artist_id = artist1.id
+album1.update()
 
 
 binding.pry
