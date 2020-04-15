@@ -49,6 +49,16 @@ class Album
         return Artist.new(results.first)
     end
 
+    def update()
+        sql = "UPDATE albums SET 
+        (title, genre, artist_id)
+        =
+        ($1, $2, $3)
+        WHERE id = $4"
+        values = [@title, @genre, @artist_id, @id]
+        SqlRunner.run(sql, values)
+    end
+
     def delete()
         sql = "DELETE FROM albums where id = $1"
         values = [@id]
